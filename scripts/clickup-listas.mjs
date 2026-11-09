@@ -19,4 +19,11 @@ for (const t of (await get('team')).teams) {
       for (const l of f.lists) console.log(`      Lista: ${l.name}  ->  ${l.id}`);
     }
   }
+  // Convidado ou acesso parcial: os espaços vêm vazios e o que existe chega como item compartilhado
+  const sh = (await get(`team/${t.id}/shared`)).shared || {};
+  for (const l of sh.lists || []) console.log(`  Lista compartilhada: ${l.name}  ->  ${l.id}`);
+  for (const f of sh.folders || []) {
+    console.log(`  Pasta compartilhada: ${f.name}`);
+    for (const l of (await get(`folder/${f.id}/list?archived=false`)).lists) console.log(`    Lista: ${l.name}  ->  ${l.id}`);
+  }
 }
