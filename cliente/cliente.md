@@ -9,7 +9,7 @@ Campos com `A DEFINIR` ainda não foram preenchidos: perguntar ao usuário, nunc
 
 | Plataforma | Conta |
 |---|---|
-| Meta Ads | `A DEFINIR` (vai em `META_AD_ACCOUNT_ID` no `.env`) |
+| Meta Ads | conta GDASH `act_206541134752256`, pixel `373279804323629` |
 | Google Ads | `A DEFINIR` |
 | CRM | `A DEFINIR` |
 | ClickUp | lista em `CLICKUP_LIST_ID` (entrega oficial dos FCAs) |
@@ -55,5 +55,4 @@ Vídeos e frames não vão para o GitHub: baixar de novo com `scripts/download-v
 ## 5. Pendências
 
 - Preencher a seção 1 do `CLAUDE.md` (oferta, destino, conversão, métrica de decisão e meta, funil)
-- Conta do Meta Ads e token no `.env`
 - Acesso ao CRM (somente leitura) para ligar lead a anúncio

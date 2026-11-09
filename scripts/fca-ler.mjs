@@ -1,16 +1,19 @@
 // FCA: lê dados/fca/<AF>/meta.json e imprime a cascata no terminal (somente plataforma, sem CRM).
 // Uso: node scripts/fca-ler.mjs <atual fim>
-// Lead = META_LEAD_ACTION do .env (ex.: onsite_conversion.messaging_conversation_started_7d para WhatsApp,
-// lead para formulário instantâneo, offsite_conversion.fb_pixel_lead para site). Padrão: lead.
+// Lead = soma dos eventos listados em META_LEAD_ACTION no .env, separados por vírgula. Na Gdash são três origens que
+// não se sobrepõem: Form Submit da LP, formulário nativo e conversa iniciada no WhatsApp (ver CLAUDE.md, seção 1).
+// No bloco CONTA, cada origem também sai separada.
 import 'dotenv/config';
 import { readFileSync, existsSync } from 'fs';
 
 const AF = process.argv[2], ARQ = `dados/fca/${AF}/meta.json`;
 if (!AF || !existsSync(ARQ)) { console.error(`Uso: node scripts/fca-ler.mjs <atual fim>. Não achei ${ARQ}.`); process.exit(1); }
 const M = JSON.parse(readFileSync(ARQ, 'utf8'));
-const LEAD = process.env.META_LEAD_ACTION || 'lead';
+const LEADS = (process.env.META_LEAD_ACTION || 'lead').split(',').map(s => s.trim()).filter(Boolean);
+const NOME = { 'offsite_conversion.custom.922969469659896': 'LP (Form Submit)', 'onsite_conversion.lead_grouped': 'Form nativo', 'onsite_conversion.messaging_conversation_started_7d': 'WhatsApp' };
 
-const leads = r => +(r.actions?.find(a => a.action_type === LEAD)?.value || 0);
+const acao = (r, t) => +(r.actions?.find(a => a.action_type === t)?.value || 0);
+const leads = r => LEADS.reduce((s, t) => s + acao(r, t), 0);
 function soma(rows, chave) {
   const g = {};
   for (const r of rows || []) {
@@ -30,13 +33,15 @@ function tabela(titulo, cur, prev) {
   const ks = [...new Set([...Object.keys(cur), ...Object.keys(prev)])].sort((a, b) => (cur[b]?.gasto || 0) - (cur[a]?.gasto || 0));
   for (const k of ks) {
     const c = met(cur[k]), p = met(prev[k]);
-    if (!c) { console.log(`${k.slice(0, 60).padEnd(60)}  sem gasto na atual (antes ${R(p.gasto)})`); continue; }
+    if (!c?.gasto) { console.log(`${k.slice(0, 60).padEnd(60)}  sem gasto na atual (antes ${R(p?.gasto ?? 0)})`); continue; }
     console.log(`${k.slice(0, 60).padEnd(60)}  gasto ${R(c.gasto)}${D(c.gasto, p?.gasto)} | leads ${c.leads}${D(c.leads, p?.leads)} | CPL ${R(c.cpl)}${D(c.cpl, p?.cpl)} | CTR ${P(c.ctr)} | CPM ${R(c.cpm)} | CVR ${P(c.cvr)} | freq ${c.freq.toFixed(2)}`);
   }
 }
 
-console.log(`Janelas: atual ${M.janelas.curr.since} a ${M.janelas.curr.until} | comparação ${M.janelas.prev.since} a ${M.janelas.prev.until} | lead = ${LEAD}`);
+console.log(`Janelas: atual ${M.janelas.curr.since} a ${M.janelas.curr.until} | comparação ${M.janelas.prev.since} a ${M.janelas.prev.until} | lead = ${LEADS.map(t => NOME[t] || t).join(' + ')}`);
 tabela('CONTA', soma(M.campaign_curr, () => 'conta'), soma(M.campaign_prev, () => 'conta'));
+for (const [w, rows] of [['atual', M.campaign_curr], ['comparação', M.campaign_prev]])
+  console.log(`   leads por origem (${w}): ` + LEADS.map(t => `${NOME[t] || t} ${(rows || []).reduce((s, r) => s + acao(r, t), 0)}`).join(' | '));
 tabela('CAMPANHA', soma(M.campaign_curr, r => r.campaign_name), soma(M.campaign_prev, r => r.campaign_name));
 tabela('CONJUNTO', soma(M.adset_curr, r => r.adset_name), soma(M.adset_prev, r => r.adset_name));
 tabela('ANÚNCIO', soma(M.ad_curr, r => r.ad_name), soma(M.ad_prev, r => r.ad_name));

@@ -17,6 +17,6 @@ Onde está cada dado e como cruzar anúncio → lead → qualificado → venda. 
 
 | Termo | Onde e como |
 |---|---|
-| Lead | `A DEFINIR` |
+| Lead | Meta Ads: LP (Form Submit, `cf7submission`) + form nativo (`lead_grouped`) + WhatsApp (conversa iniciada). Detalhe na seção 1 do `CLAUDE.md` |
 | Qualificado | `A DEFINIR` |
 | Venda | `A DEFINIR` |

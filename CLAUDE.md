@@ -12,8 +12,8 @@
 | Oferta das campanhas | `A DEFINIR` |
 | Região de atuação | `A DEFINIR` |
 | Canais | Meta Ads · `A DEFINIR` (Google Ads, outros) |
-| Destino | `A DEFINIR` (WhatsApp, formulário instantâneo, landing page) |
-| Conversão rastreada | `A DEFINIR` |
+| Destino | Varia por campanha: landing page, formulário nativo do Meta Ads ou WhatsApp |
+| Conversão rastreada (lead) | Soma de 3 origens que não se sobrepõem: **LP** = conversão personalizada "Form Submit" (`offsite_conversion.custom.922969469659896`, evento `cf7submission` do pixel 373279804323629); **form nativo** = `onsite_conversion.lead_grouped`; **WhatsApp** = `onsite_conversion.messaging_conversation_started_7d`. Configurado em `META_LEAD_ACTION`. Não usar `fb_pixel_custom` (soma o evento "20s calls", que não é lead) nem `lead` junto com `lead_grouped` (conta o formulário duas vezes). A conversão "Signup" (`custom.2002813826844395`) existe mas não entra no lead até o usuário dizer o que ela representa |
 | CRM | `A DEFINIR` |
 | Métrica de decisão | `A DEFINIR` (ex.: custo por lead qualificado), meta de `A DEFINIR` |
 | Funil | `A DEFINIR` (ex.: Lead → Qualificado → Visita técnica → Proposta → Venda) |
