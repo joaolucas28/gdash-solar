@@ -55,8 +55,9 @@ Cascata do `CLAUDE.md` de cima para baixo, parando no nível onde a variação e
 
 ## 4. Gráficos
 
-1. Montar `dados/fca/AF/graficos.json` (formato no topo de `scripts/fca-graficos.py`): gráfico diário da métrica de
-   decisão, por campanha, por anúncio (`barras_h`) e um por FCA que prove a Causa.
+1. `node scripts/fca-graficos-base.mjs AF [meta]` monta `dados/fca/AF/graficos.json` com os 3 gráficos-base (CPL diário,
+   por campanha e por anúncio com 3% ou mais do gasto). Acrescentar à mão um gráfico por FCA que prove a Causa
+   (formato no topo de `scripts/fca-graficos.py`); rodar o base de novo mantém os extras.
 2. `python scripts/fca-graficos.py AF` grava os PNG em `docs/fca/AF/`.
 3. **Abrir cada PNG e olhar** antes de publicar.
 
