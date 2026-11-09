@@ -1,0 +1,8 @@
+{
+  "name": "gdash-solar",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "dotenv": "^17.4.2"
+  }
+}

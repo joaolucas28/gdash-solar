@@ -1,0 +1,27 @@
+# Repositório privado do projeto Gdash Solar (scripts, dados, FCAs).
+# Credenciais: o .env nunca sobe aberto. Sobe só trancado com senha (.env.cifrado),
+# gerado e aberto por scripts/env-senha.mjs.
+.env
+.env.*
+*.env
+!.env.cifrado
+!.env.exemplo
+
+# Instalável com npm install
+node_modules/
+
+# Vídeos e frames: pesados e baixáveis de novo
+videos/
+*.mp4
+frames/
+
+# Lixo de sistema
+*.log
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Credenciais do Google (OAuth)
+client_secret*.json
+credentials*.json
+token*.json

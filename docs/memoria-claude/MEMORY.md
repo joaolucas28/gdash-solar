@@ -1,0 +1,5 @@
+- [Rodar consultas pelo usuário](rodar-consultas-pelo-usuario.md) — usuário pede, Claude roda o script
+- [Ações diretas](acoes-diretas.md) — ação é decisão: sem "só se"
+- [Meta Ads x meta](meta-ads-vs-meta.md) — canal sempre "Meta Ads"
+- [Entrega do FCA](fca-entrega.md) — gráficos, por anúncio, enxuto; ClickUp + Notion pessoal
+- [Início do projeto](gdash-inicio.md) — campos A DEFINIR a preencher antes do primeiro FCA
