@@ -7,21 +7,24 @@
 
 | Item | Informação |
 |---|---|
-| Cliente | Gdash Solar |
-| Segmento | Energia solar · `A DEFINIR` (residencial, comercial, rural, usina) |
-| Oferta das campanhas | `A DEFINIR` |
-| Região de atuação | `A DEFINIR` |
-| Canais | Meta Ads · `A DEFINIR` (Google Ads, outros) |
+| Cliente | GDASH (gdash.solar), ligada à Sharenergy. Marca, produto e público: `cliente/marca.md` |
+| Segmento | **SaaS B2B** de gestão de ativos de energia renovável (monitoramento de usinas, auditoria de faturas, relatórios, O&M, I-REC). Não vende energia solar ao consumidor |
+| Oferta das campanhas | Varia por campanha: eventos e conteúdo (podcast GDASH Cast, lives, feiras como Intersolar e Expo Solar), ofertas sazonais (Black November), produto (Agente de IA, geração compartilhada) |
+| Público (ICP) | Integradores, desenvolvedores e gestores de usinas de geração distribuída com mais de 20 sistemas e equipe de mais de 6 pessoas. Região: Brasil, com ações pontuais na América Latina (Expo Solar Colômbia) |
+| Canais | Meta Ads (esta análise). A empresa também usa Google Ads, LinkedIn Ads, SEO, eventos e e-mail (Customer.io) |
 | Destino | Varia por campanha: landing page, formulário nativo do Meta Ads ou WhatsApp |
 | Conversão rastreada (lead) | Soma de 3 origens que não se sobrepõem: **LP** = conversão personalizada "Form Submit" (`offsite_conversion.custom.922969469659896`, evento `cf7submission` do pixel 373279804323629); **form nativo** = `onsite_conversion.lead_grouped`; **WhatsApp** = `onsite_conversion.messaging_conversation_started_7d`. Configurado em `META_LEAD_ACTION`. Não usar `fb_pixel_custom` (soma o evento "20s calls", que não é lead) nem `lead` junto com `lead_grouped` (conta o formulário duas vezes). A conversão "Signup" (`custom.2002813826844395`) existe mas não entra no lead até o usuário dizer o que ela representa |
-| CRM | `A DEFINIR` |
+| CRM | `A DEFINIR` (o SOP cita Customer.io para nutrição e PostHog para produto; CRM de vendas não identificado) |
 | Métrica de decisão | `A DEFINIR` (ex.: custo por lead qualificado), meta de `A DEFINIR` |
-| Funil | `A DEFINIR` (ex.: Lead → Qualificado → Visita técnica → Proposta → Venda) |
+| Funil | Lead → SQL → Oportunidade → Cliente (MRR). North Star da empresa: MRR. KPIs da weekly incluem custo por lead e SQLs |
 
 Ao longo deste documento, **"custo por qualificado"** e **"meta"** se referem à métrica de decisão e à meta da tabela
 acima. Quando forem definidas, troque os termos aqui e em `cliente/cliente.md`.
 
 ## 2. Regra de escopo (inegociável)
+
+- **Contexto B2B de nicho:** o público é pequeno e técnico. CPL baixo com lead fora do ICP (consumidor final,
+  integrador muito pequeno) é desperdício, não ganho. Antes de comemorar CPL, perguntar pela qualidade.
 
 - **O output de decisão é o custo por qualificado**, contra a meta da seção 1. O CPL é input: dá para subir leads e
   piorar a qualidade ao mesmo tempo, então CPL bom não fecha análise.
@@ -98,7 +101,7 @@ encontra a variação é onde está a Causa, e é onde a Ação deve atuar. Gran
 | **Posicionamento** | Feed, Reels, Stories, Audience Network. Algum consumindo verba com baixa conversão? |
 | **Dispositivo** | Mobile domina o volume. Se desktop tiver gasto relevante, olhe a taxa de conversão separada. |
 | **Gênero** | Pode revelar desequilíbrio real no custo por lead. |
-| **Região** | Em solar, gasto fora da área atendida pela equipe técnica é desperdício direto. Confira sempre. |
+| **Região** | Confira se o gasto está no Brasil (ou no país da campanha, quando for evento fora). |
 | **Dia / Horário** | A variação está concentrada em um período específico? |
 | **Frequência** | Acima de 3 a 4 na janela indica fadiga de criativo. O CTR começa a cair. |
 

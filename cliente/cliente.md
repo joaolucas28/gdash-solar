@@ -1,6 +1,6 @@
-# Gdash Solar
+# GDASH
 
-Ficha do cliente. Ler antes de qualquer análise desta conta. Onde está cada dado: `cliente/guia-dados.md`.
+Ficha do cliente. Marca, produto, ICP e processo do time: `cliente/marca.md`. Ler antes de qualquer análise desta conta. Onde está cada dado: `cliente/guia-dados.md`.
 Como documentar um criativo: skill `avaliar-criativo` em `.claude/skills/`.
 
 Campos com `A DEFINIR` ainda não foram preenchidos: perguntar ao usuário, nunca supor.
@@ -54,5 +54,6 @@ Vídeos e frames não vão para o GitHub: baixar de novo com `scripts/download-v
 
 ## 5. Pendências
 
-- Preencher a seção 1 do `CLAUDE.md` (oferta, destino, conversão, métrica de decisão e meta, funil)
+- Definir métrica de decisão e meta (seção 1 do `CLAUDE.md`)
+- Identificar o CRM de vendas e onde o SQL é marcado
 - Acesso ao CRM (somente leitura) para ligar lead a anúncio
