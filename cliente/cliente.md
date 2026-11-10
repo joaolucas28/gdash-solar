@@ -12,7 +12,7 @@ Campos com `A DEFINIR` ainda não foram preenchidos: perguntar ao usuário, nunc
 | Meta Ads | conta GDASH `act_206541134752256`, pixel `373279804323629` |
 | Google Ads | `A DEFINIR` |
 | CRM | `A DEFINIR` |
-| ClickUp | lista em `CLICKUP_LIST_ID` (entrega oficial dos FCAs) |
+| ClickUp | lista "Análises de Mídia Paga" (pasta Campaign Tracking & Analytics, id 1400700000004418, em `CLICKUP_LIST_ID`). Padrão de análise fixado como tarefa: https://app.clickup.com/t/17txqgz6w7a (fonte: `docs/padrao-analise/PADRAO.md`) |
 | Notion pessoal | base em `NOTION_PESSOAL_DB` (arquivo das análises) |
 
 ## 2. Teste de anúncio e veredito
