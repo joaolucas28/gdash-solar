@@ -241,6 +241,12 @@ Repositório privado `joaolucas28/gdash-solar`, só da Gdash Solar. Nenhum outro
 
 Conferir tudo de uma vez: `node scripts/conexoes.mjs`.
 
+### MCP (`.mcp.json`)
+
+| Servidor | Endereço | Para quê |
+|---|---|---|
+| `customerio` | `https://mcp.customer.io/mcp` | Customer.io da GDASH: segmentos, campanhas de e-mail e in-app, inscritos de eventos. Login pelo `/mcp` do Claude Code, sem token no `.env` |
+
 O `.env` sobe só trancado com a senha do usuário, como `.env.cifrado` (AES-256-GCM, chave por scrypt). A senha é
 digitada pelo usuário num terminal PowerShell e nunca aparece no chat nem em arquivo.
 - Trancar, depois de criar ou trocar qualquer token: `node scripts/env-senha.mjs trancar`, depois commit e push do `.env.cifrado`.
